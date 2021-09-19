@@ -36,8 +36,8 @@ class _terraformApply(jimi.action._action):
 
     def doAction(self,data):
         terraform_dir = jimi.helpers.evalString(self.terraform_dir,{"data" : data["flowData"], "eventData" : data["eventData"], "conductData" : data["conductData"], "persistentData" :  data["persistentData"] })
-        terraform_plan = jimi.helpers.evalDict(self.terraform_plan,{"data" : data["flowData"], "eventData" : data["eventData"], "conductData" : data["conductData"], "persistentData" :  data["persistentData"] })
-        terraform_vars = jimi.helpers.evalString(self.terraform_vars,{"data" : data["flowData"], "eventData" : data["eventData"], "conductData" : data["conductData"], "persistentData" :  data["persistentData"] })
+        terraform_plan = jimi.helpers.evalString(self.terraform_plan,{"data" : data["flowData"], "eventData" : data["eventData"], "conductData" : data["conductData"], "persistentData" :  data["persistentData"] })
+        terraform_vars = jimi.helpers.evalDict(self.terraform_vars,{"data" : data["flowData"], "eventData" : data["eventData"], "conductData" : data["conductData"], "persistentData" :  data["persistentData"] })
         if not jimi.helpers.safeFilepath(str(Path(terraform_dir)),"data/temp"):
             return { "result" : False, "rc" : 403, "msg" : "Invalid terraform directory." }
         t = Terraform(working_dir=str(Path(terraform_dir)))
